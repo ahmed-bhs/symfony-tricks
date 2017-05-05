@@ -1,4 +1,4 @@
-Generate a single entity from a table in Symfony3 <br>
+<h1>Generate a single entity from a table in Symfony3</h1> <br>
 A long time ago we saw with Symfony2 how to generate entities from the database , the only change that there is with regard to version 3 of Symfony is that the console instead of being in app / console is in bin / console.
 Today we will see how to generate a single entity from a table in Symfony3.
 If you need to create another table in the database simply create and launch the commands again to generate entities that we saw earlier and in theory will generate the entity that does not exist in the project.
