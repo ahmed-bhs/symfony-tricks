@@ -1,2 +1,2 @@
 # symfony
-symfony-trics
+<kbd>symfony-trics</kbd>
