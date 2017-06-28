@@ -55,14 +55,20 @@ class QueryBuilder
             $queryBuilder->leftJoin('entity.'.$sortFieldParts[0], $sortFieldParts[0]);
         }
 
-        if (!empty($dqlFilter)) {if($dqlFilter == 'a') {
-           $queryBuilder ->andWhere(' entity.roles  LIKE :d')->setParameter('d','%ROLE_ADMIN%'  );
+        if (!empty($dqlFilter)) {
+            if($dqlFilter == 'c') {
+           $queryBuilder ->andWhere(' entity.roles  LIKE :d')->setParameter('d','%ROLE_C%'  );
         }
-          elseif ($dqlFilter == 'a') {
-           $queryBuilder ->andWhere(' entity.roles NOT LIKE :d')->setParameter('d','%ROLE_ADMIN%'  );
+          elseif ($dqlFilter == 'm') {
+           $queryBuilder ->andWhere(' entity.roles LIKE :d')->setParameter('d','%ROLE_M%'  );
         }
 
-
+         elseif ($dqlFilter == 'am') {
+           $queryBuilder ->andWhere(' entity.roles LIKE :d')->setParameter('d','%ROLE_AM%'  );
+        }
+                 elseif ($dqlFilter == 'a') {
+           $queryBuilder ->andWhere(' entity.roles LIKE :d')->setParameter('d','%ROLE_ADMIN%'  );
+        }
 
           else  $queryBuilder->andWhere($dqlFilter);
         }
@@ -141,12 +147,23 @@ class QueryBuilder
             $queryBuilder->setParameters($queryParameters);
         }
 
+       
         if (!empty($dqlFilter)) {
-            $queryBuilder->andWhere($dqlFilter);
+            if($dqlFilter == 'c') {
+           $queryBuilder ->andWhere(' entity.roles  LIKE :d')->setParameter('d','%ROLE_C%'  );
+        }
+          elseif ($dqlFilter == 'm') {
+           $queryBuilder ->andWhere(' entity.roles LIKE :d')->setParameter('d','%ROLE_M%'  );
         }
 
-        if (null !== $sortField) {
-            $queryBuilder->orderBy(sprintf('%s%s', $isSortedByDoctrineAssociation ? '' : 'entity.', $sortField), $sortDirection ?: 'DESC');
+         elseif ($dqlFilter == 'am') {
+           $queryBuilder ->andWhere(' entity.roles LIKE :d')->setParameter('d','%ROLE_AM%'  );
+        }
+                 elseif ($dqlFilter == 'a') {
+           $queryBuilder ->andWhere(' entity.roles LIKE :d')->setParameter('d','%ROLE_ADMIN%'  );
+        }
+
+          else  $queryBuilder->andWhere($dqlFilter);
         }
 
         return $queryBuilder;
